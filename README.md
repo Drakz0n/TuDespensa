@@ -30,7 +30,7 @@ graph TD
     G --> I[Actualizar Saldo Restante]
     H --> I
     I --> J[Fin: Visualización de Despensa]
-
+```
 
 ## Investigacion
 ### Archivo RESERACH.MD incluyendo la informacion de investigacion.
