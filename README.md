@@ -2,6 +2,10 @@
 La Solucion movil diseñada para optimizar la gestión de víveres y productos del hogar, y hacer rendir tu bolsillo y maximizar la eficiencia del gasto familiar.
 
 ## 📱Caracteristicas propias del movil 
+- **Portabilidad Crítica**: Acceso instantáneo a la app.
+- **Interfaz Táctil Optimizada**: Selección rápida de productos y ajuste de cantidades mediante gestos.
+- **Notificaciones Locales**: Alertas o recordatorios sobre el presupuesto.
+- **Modo Offline**: Capacidad de consultar y editar la lista de compras incluso en pasillos de supermercados con baja cobertura.
 ### 📋Requerimientos (historias de usuarios y RF/RNF)
 #### RF
 - El sistema debe permitir el ingreso de un presupuesto total
