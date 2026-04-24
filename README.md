@@ -2,16 +2,13 @@
 La Solucion movil diseñada para optimizar la gestión de víveres y productos del hogar, y hacer rendir tu bolsillo y maximizar la eficiencia del gasto familiar.
 
 ## 📱Caracteristicas propias del movil 
-
-
-
-## 📋Requerimientos (historias de usuarios y RF/RNF)
-### RF
+### 📋Requerimientos (historias de usuarios y RF/RNF)
+#### RF
 - El sistema debe permitir el ingreso de un presupuesto total
 - El sistema debe permitir agregar, editar u eliminar cosas de la despensa
 - El sistema debe calcular automaticamente el gasto proyecto vs el presupuesto real e identificar el restante
 - los productos deben poder clasificarse por niveles de prioridad
-### RNF
+#### RNF
 - La aplicacion debe ser reactiva y mostrar actualizaciones en tiempo real
 - los datos deben persistir en el dispocitivo (persistencia de datos)
 
@@ -33,8 +30,7 @@ graph TD
 ```
 
 ## Investigacion
-### Archivo RESERACH.MD incluyendo la informacion de investigacion.
-
+### Archivo [RESEARCH](RESEARCH.md) incluyendo la informacion de investigacion.
 
 
 
