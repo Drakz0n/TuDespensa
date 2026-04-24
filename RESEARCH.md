@@ -31,7 +31,7 @@ El uso de flutter nos ayudara a la velocidad de produccion y desarrollo de la ap
 Lenguaje PRINCIPAL utilizado en el framework de flutter.
 ### 🖥️Implementacion de las funcionalidades
 Para cumplir con las características propias del móvil, la arquitectura se basará en los siguientes pilares técnicos:
-#### ‼️ Sistema de Prioridades (Lógica de Negocio)
+#### ‼️ Sistema de Prioridades
 Se implementará mediante un **Enumerado (`enum`)** en Dart para categorizar los productos. Esto permite realizar filtrados eficientes en la interfaz de usuario:
 * `Priority.high` (Necesarios)
 * `Priority.medium` (Básicos)
