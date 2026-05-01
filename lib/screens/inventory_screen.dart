@@ -48,10 +48,34 @@ class InventoryScreen extends StatelessWidget {
                 id: pantry.id,
                 name: pantry.name,
                 products: [
-                  Product(id: '1', name: 'Arroz', price: 1500, priority: PriorityLevel.high),
-                  Product(id: '2', name: 'Aceite', price: 3000, priority: PriorityLevel.high),
-                  Product(id: '3', name: 'Fideos', price: 900, priority: PriorityLevel.medium),
-                  Product(id: '4', name: 'Galletas', price: 1200, priority: PriorityLevel.low),
+                  Product(
+                    id: '1', 
+                    name: 'Arroz', 
+                    price: 1500, 
+                    priority: PriorityLevel.high, 
+                    ImagePath: 'assets/images/Arroz.png' 
+                  ),
+                  Product(
+                    id: '2', 
+                    name: 'Aceite', 
+                    price: 3000, 
+                    priority: PriorityLevel.high, 
+                    ImagePath: 'assets/images/Aceite.png'
+                  ),
+                  Product(
+                    id: '3', 
+                    name: 'Fideos', 
+                    price: 900, 
+                    priority: PriorityLevel.medium, 
+                    ImagePath: 'assets/images/Fideos.png'
+                  ),
+                  Product(
+                    id: '4', 
+                    name: 'Galletas', 
+                    price: 1200, 
+                    priority: PriorityLevel.low, 
+                    ImagePath: 'assets/images/Galletas.png'
+                  ),
                 ],
               );
 

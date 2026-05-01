@@ -39,17 +39,23 @@ class PantryDetailsScreen extends StatelessWidget {
         ...products.map((product) => ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           leading: Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Icon(
-              Icons.image_outlined, 
-              color: Colors.grey[600],
-            ),
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8),
           ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: product.ImagePath != null
+                ? Image.asset(
+                    product.ImagePath!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
+                  )
+                : const Icon(Icons.image_outlined),
+              ),
+            ),
           title: Text(product.name),
           trailing: Text('\$${product.price.toInt()}'),
         )).toList(),
