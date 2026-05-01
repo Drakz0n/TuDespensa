@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/pantry.dart';
 
 class InventoryScreen extends StatelessWidget {
   const InventoryScreen({super.key});
@@ -7,10 +8,10 @@ class InventoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context); 
     
-    final List<String> despensas = [
-      'Despensa Cocina',
-      'Despensa Congelador',
-      'Despensa MiniBar',
+    final List<Pantry> despensas = [
+      Pantry(id: '1', name: 'Despensa Cocina'),
+      Pantry(id: '2', name: 'Despensa Congelador'),
+      Pantry(id: '3', name: 'Despensa MiniBar'),
     ];
 
     return Scaffold(
@@ -22,6 +23,8 @@ class InventoryScreen extends StatelessWidget {
         itemCount: despensas.length,
         separatorBuilder: (context, index) => const Divider(height: 1), 
         itemBuilder: (context, index) {
+          final pantry = despensas[index];
+
           return ListTile(
             contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             leading: Icon(
@@ -29,13 +32,15 @@ class InventoryScreen extends StatelessWidget {
               color: theme.colorScheme.primary,
             ),
             title: Text(
-              despensas[index],
+              pantry.name,
               style: theme.textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurface,
               ),
             ),
             trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () {}, 
+            onTap: () {
+              // Dejarmos la navegacion hacia los productos en la despensa
+            }, 
           );
         },
       ),
