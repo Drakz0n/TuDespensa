@@ -21,4 +21,12 @@ class Pantry {
 
   List<Product> get highPriorityProducts => // Prioridad alta
       products.where((p) => p.priority == PriorityLevel.high).toList();
+
+  // Getters para cantidades por prioridad
+  int get lowCount => lowPriorityProducts.length; // Cantidad de productos de prioridad
+  int get mediumCount => mediumPriorityProducts.length; // Cantidad de productos de prioridad
+  int get highCount => highPriorityProducts.length; // Cantidad de productos de prioridad
+
+  // Calculo del precio total
+  double get totalPrice => products.fold(0, (sum, p) => sum + p.price); // Precio total de los productos
 }
