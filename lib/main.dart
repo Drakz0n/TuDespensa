@@ -14,8 +14,19 @@ class TuDespensaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TuDespensa',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        useMaterial3: true, 
+        //ThemeData para toda la aplicación
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.green,
+          primary: Colors.green[700],
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green[700],
+            foregroundColor: Colors.white,
+          ),
+        ),
       ),
       home: const MainNavigation(),
     );
