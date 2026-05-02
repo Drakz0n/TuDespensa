@@ -2,6 +2,7 @@ import 'dart:ui'; // para usar el blur en los detalles importantes
 import 'package:flutter/material.dart';
 import '../models/pantry.dart';
 import '../models/product.dart';
+import 'saved_products_screen.dart';
 
 class PantryDetailsScreen extends StatefulWidget {
   final Pantry pantry;
@@ -183,7 +184,26 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(leading: const Icon(Icons.search), title: const Text('Agregar producto existente'), onTap: () => Navigator.pop(context)),
+            ListTile(
+              leading: const Icon(Icons.search), 
+              title: const Text('Agregar producto existente'), 
+              onTap: () async { 
+                Navigator.pop(context); // Cierra el menú 
+                
+                // Navega a la pantalla de productos guardados
+                final productSelected = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SavedProductsScreen()),
+                );
+
+                if (productSelected != null) {
+                  // vacio por ahora.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('${productSelected.name} añadido a la despensa')),
+                  );
+                }
+              },
+            ),
             ListTile(leading: const Icon(Icons.add_box_outlined), title: const Text('Crear nuevo producto'), onTap: () { Navigator.pop(context); _showCreateProductDialog(context); }),
             const SizedBox(height: 10),
           ],
@@ -200,8 +220,31 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Boton de Camara
+            InkWell(
+              onTap: () {}, // Simular abrir cámara
+              child: Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.camera_alt, color: Colors.grey),
+              ),
+            ),
             const TextField(decoration: InputDecoration(labelText: 'Nombre')),
             const TextField(decoration: InputDecoration(labelText: 'Precio'), keyboardType: TextInputType.number),
+            // Dropdown para Prioridad
+            DropdownButtonFormField<String>(
+              decoration: const InputDecoration(labelText: 'Prioridad'),
+              items: const [
+                DropdownMenuItem(value: 'high', child: Text('Alta')),
+                DropdownMenuItem(value: 'medium', child: Text('Media')),
+                DropdownMenuItem(value: 'low', child: Text('Baja')),
+              ],
+              onChanged: (value) {}, // Simular selección de prioridad
+            ),  
           ],
         ),
         actions: [

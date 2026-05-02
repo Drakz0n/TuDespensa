@@ -27,7 +27,7 @@ class InventoryScreen extends StatelessWidget {
         name: 'Despensa Congelador',
         products: [
           Product(id: '4', name: 'Carne Molida', price: 4500, priority: PriorityLevel.high, ImagePath: 'assets/images/CarneMolidaCongelada.png'),
-          Product(id: '5', name: 'Papas Duquesas', price: 3800, priority: PriorityLevel.medium, ImagePath: 'assets/images/PapasDuquesasCongelada.png'),
+          Product(id: '5', name: 'Papas Duquesas', price: 3800, priority: PriorityLevel.medium, ImagePath: 'assets/images/PapasDuquesasCongeladas.png'),
         ]
       ),
       Pantry(
