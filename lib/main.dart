@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/inventory_screen.dart'; 
-import 'screens/budget_screen.dart';    
+import 'screens/budget_screen.dart';  
+import 'screens/about_screen.dart';  
 
 void main() => runApp(const TuDespensaApp());
 
@@ -47,6 +48,7 @@ class _MainNavigationState extends State<MainNavigation> {
     HomeScreen(),
     InventoryScreen(),
     BudgetScreen(),
+    AboutScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -78,6 +80,10 @@ class _MainNavigationState extends State<MainNavigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_wallet),
             label: 'Presupuesto',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Acerca de',
           ),
         ],
       ),
