@@ -10,6 +10,7 @@ class Product {
   final double price;
   final PriorityLevel priority;
   final String? imagePath;
+  int quantity; // Cantidad del producto en la despensa
 
   Product({
     required this.id,
@@ -17,5 +18,6 @@ class Product {
     required this.price,
     required this.priority,
     this.imagePath,
+    this.quantity = 1,
   });
 }

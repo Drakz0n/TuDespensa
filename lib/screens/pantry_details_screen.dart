@@ -157,20 +157,51 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
           padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
           child: Text(title, style: TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 16)),
         ),
-        ...products.map((product) => ListTile(
-          leading: Container(
-            width: 52, height: 52,
-            decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: product.imagePath != null
-                  ? Image.asset(product.imagePath!, fit: BoxFit.cover)
-                  : const Icon(Icons.image_outlined),
-            ),
-          ),
-          title: Text(product.name, style: const TextStyle(fontWeight: FontWeight.w500)),
-          trailing: Text('\$${product.price.toInt()}', style: const TextStyle(fontWeight: FontWeight.bold)),
-        )),
+        ...products.map((product) {
+            return ListTile(
+              dense: true,
+              leading: product.imagePath != null 
+                ? Image.asset(product.imagePath!, width: 40, height: 40, fit: BoxFit.cover)
+                : const Icon(Icons.image, size: 40),
+              title: Text(product.name),
+              subtitle: Text('\$${product.price.toInt()} c/u'), // Precio por unidad
+              trailing: Container(
+                width: 120, 
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // BOTÓN MENOS
+                    IconButton(
+                      visualDensity: VisualDensity.compact,
+                      icon: const Icon(Icons.remove_circle_outline, size: 20, color: Colors.grey),
+                      onPressed: () {
+                        setState(() {
+                          if (product.quantity > 0) product.quantity--;
+                        });
+                      },
+                    ),
+                    
+                    // CANTIDAD
+                    Text(
+                      '${product.quantity}', 
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
+                    ),
+                    
+                    // BOTÓN MÁS
+                    IconButton(
+                      visualDensity: VisualDensity.compact,
+                      icon: const Icon(Icons.add_circle_outline, size: 20, color: Colors.green),
+                      onPressed: () {
+                        setState(() {
+                          product.quantity++;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }),
         const Divider(indent: 16, endIndent: 16),
       ],
     );
@@ -198,7 +229,6 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
 
                 if (productSelected != null) {
                   // vacio por ahora.
-                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${productSelected.name} añadido a la despensa')),
                   );
