@@ -1,6 +1,14 @@
 # 🛒TuDespensa 
 La Solucion movil diseñada para optimizar la gestión de víveres y productos del hogar, y hacer rendir tu bolsillo y maximizar la eficiencia del gasto familiar.
 
+## 👤 Historias de Usuarios
+
+HU1: Como jefe del hogar, quiero definir un presupuesto mensual para evitar sobreendeudarme en el supermercado.
+
+HU2: Como Estudiante universitario, debo mantener un presupuesto muy estrecho, por ello debo saber que es importante para saber qué artículos descartar si el dinero no alcanza.
+
+HU3: Como joven adulto ahora vivo solo, para ello debo empezar a organizar mi presupuesto y mantener lo necesario en mi hogar asi tener mas dinero para el resto del mes.
+
 ## 📖 Guía de Uso (Manual de Usuario)
 
 Para sacar el máximo provecho a **TuDespensa** y hacer rendir tu presupuesto mensual, sigue estos pasos:
