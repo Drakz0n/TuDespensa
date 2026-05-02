@@ -79,7 +79,7 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
                         '\$999999',
                         style: theme.textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w900,
-                          color: theme.colorScheme.primary.withOpacity(0.5),
+                          color: theme.colorScheme.primary.withValues(alpha: 0.5),
                         ),
                       ),
                     ),
@@ -95,21 +95,21 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
                       ? _buildTextCounter('Alta: \$${widget.pantry.highPrice.toInt()}', Colors.red)
                       : ImageFiltered(
                           imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: _buildTextCounter('Alta: \$99999', Colors.red.withOpacity(0.5)),
+                          child: _buildTextCounter('Alta: \$99999', Colors.red.withValues(alpha: 0.5)),
                         ),
                     _buildDivider(),
                     _isBudgetVisible
                       ? _buildTextCounter('Media: \$${widget.pantry.mediumPrice.toInt()}', Colors.orange)
                       : ImageFiltered(
                           imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: _buildTextCounter('Media: \$99999', Colors.orange.withOpacity(0.5)),
+                          child: _buildTextCounter('Media: \$99999', Colors.orange.withValues(alpha: 0.5)),
                         ),
                     _buildDivider(),
                     _isBudgetVisible
                       ? _buildTextCounter('Baja: \$${widget.pantry.lowPrice.toInt()}', Colors.blue)
                       : ImageFiltered(
                           imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: _buildTextCounter('Baja: \$99999', Colors.blue.withOpacity(0.5)),
+                          child: _buildTextCounter('Baja: \$99999', Colors.blue.withValues(alpha: 0.5)),
                         ), 
                   ],
                 ),
@@ -163,14 +163,14 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
             decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: product.ImagePath != null
-                  ? Image.asset(product.ImagePath!, fit: BoxFit.cover)
+              child: product.imagePath != null
+                  ? Image.asset(product.imagePath!, fit: BoxFit.cover)
                   : const Icon(Icons.image_outlined),
             ),
           ),
           title: Text(product.name, style: const TextStyle(fontWeight: FontWeight.w500)),
           trailing: Text('\$${product.price.toInt()}', style: const TextStyle(fontWeight: FontWeight.bold)),
-        )).toList(),
+        )),
         const Divider(indent: 16, endIndent: 16),
       ],
     );
@@ -198,6 +198,7 @@ class _PantryDetailsScreenState extends State<PantryDetailsScreen> {
 
                 if (productSelected != null) {
                   // vacio por ahora.
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('${productSelected.name} añadido a la despensa')),
                   );

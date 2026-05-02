@@ -9,13 +9,13 @@ class Product {
   final String name;
   final double price;
   final PriorityLevel priority;
-  final String? ImagePath;
+  final String? imagePath;
 
   Product({
     required this.id,
     required this.name,
     required this.price,
     required this.priority,
-    this.ImagePath,
+    this.imagePath,
   });
 }

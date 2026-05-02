@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
 import '../models/product_registry.dart';
 
 class SavedProductsScreen extends StatelessWidget {
@@ -31,10 +30,10 @@ class SavedProductsScreen extends StatelessWidget {
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundColor: Colors.grey[200],
-                    backgroundImage: product.ImagePath != null 
-                        ? AssetImage(product.ImagePath!) 
+                    backgroundImage: product.imagePath != null 
+                        ? AssetImage(product.imagePath!) 
                         : null,
-                    child: product.ImagePath == null ? const Icon(Icons.fastfood) : null,
+                    child: product.imagePath == null ? const Icon(Icons.fastfood) : null,
                   ),
                   title: Text(product.name),
                   subtitle: Text('Precio : \$${product.price.toInt()}'),

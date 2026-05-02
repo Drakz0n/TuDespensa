@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             '${p.name}: ${p.products.length} ítems',
                             style: const TextStyle(color: Colors.white, fontSize: 17),
                           ),
-                        )).toList(),
+                        )),
 
                         const Spacer(),
                         const Divider(color: Colors.white24, thickness: 1, indent: 40, endIndent: 40),

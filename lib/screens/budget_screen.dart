@@ -153,7 +153,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
             '\$${e.value.toInt()}', 
             const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
           ),
-        )).toList(),
+        )),
         ListTile(
           title: const Text('Saldo Restante', style: TextStyle(fontWeight: FontWeight.bold)),
           trailing: _buildMonetaryText(
