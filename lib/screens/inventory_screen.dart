@@ -9,6 +9,9 @@ class InventoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    // Lista de despensas con datos de prueba para la maqueta
     final List<Pantry> despensas = [
       Pantry(
         id: '1', 
@@ -38,7 +41,10 @@ class InventoryScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Mis Despensas')),
+      appBar: AppBar(
+        title: const Text('Mis Despensas'),
+        centerTitle: true,
+      ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
         itemCount: despensas.length,
@@ -46,6 +52,33 @@ class InventoryScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return PantryTile(pantry: despensas[index]);
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAddPantryDialog(context),
+        backgroundColor: theme.colorScheme.primary,
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
+    );
+  }
+
+  void _showAddPantryDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Nueva Despensa'),
+        content: const TextField(
+          decoration: InputDecoration(hintText: 'Nombre (ej. Bodega)'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context), 
+            child: const Text('Cancelar'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context), 
+            child: const Text('Crear'),
+          ),
+        ],
       ),
     );
   }
@@ -60,34 +93,42 @@ class PantryTile extends StatefulWidget {
 }
 
 class _PantryTileState extends State<PantryTile> {
-  bool _showPrice = false;
+  bool _showPrice = false; // Controla si se ve el precio o el blur
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return ListTile(
-      leading: Icon(Icons.inventory_2_outlined, color: theme.colorScheme.primary),
-      title: Text(widget.pantry.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+      contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      leading: Icon(
+        Icons.inventory_2_outlined, 
+        color: theme.colorScheme.primary,
+        size: 28,
+      ),
+      title: Text(
+        widget.pantry.name, 
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
       subtitle: Text(
         'Alta: ${widget.pantry.highCount} | Media: ${widget.pantry.mediumCount} | Baja: ${widget.pantry.lowCount}\nTotal: ${widget.pantry.products.length} productos',
         style: theme.textTheme.bodySmall,
       ),
-
-      // Lado derecho
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Precio con efecto Blur
+          // Precio con efecto desenfocado
           _showPrice 
-            ? Text('\$${widget.pantry.totalPrice.toInt()}', style: const TextStyle(fontWeight: FontWeight.bold))
+            ? Text(
+                '\$${widget.pantry.totalPrice.toInt()}', 
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              )
             : ImageFiltered(
                 imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                 child: const Text('\$99999'), 
               ),
-
-          const SizedBox(width: 10),
-          // Botón del Ojito
+          const SizedBox(width: 4),
+          // Botón del ojito para revelar el precio
           IconButton(
             icon: Icon(
               _showPrice ? Icons.visibility_off_outlined : Icons.visibility_outlined,
@@ -100,14 +141,15 @@ class _PantryTileState extends State<PantryTile> {
               });
             },
           ),
-
-          const Icon(Icons.arrow_forward_ios, size: 16),
+          const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey),
         ],
       ),
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PantryDetailsScreen(pantry: widget.pantry)),
+          MaterialPageRoute(
+            builder: (context) => PantryDetailsScreen(pantry: widget.pantry),
+          ),
         );
       },
     );

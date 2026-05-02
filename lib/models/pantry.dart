@@ -29,4 +29,10 @@ class Pantry {
 
   // Calculo del precio total
   double get totalPrice => products.fold(0, (sum, p) => sum + p.price); // Precio total de los productos
+
+  // Calculo del precio por prioridad
+  double get lowPrice => lowPriorityProducts.fold(0, (sum, p) => sum + p.price); // Precio total de productos de prioridad
+  double get mediumPrice => mediumPriorityProducts.fold(0, (sum, p) => sum + p.price); // Precio total de productos de prioridad
+  double get highPrice => highPriorityProducts.fold(0, (sum, p) => sum + p.price); // Precio total de productos de prioridad
+  
 }
