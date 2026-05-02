@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../models/pantry.dart';
 import '../models/product_registry.dart';
+import 'saved_products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,25 +81,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         const Spacer(),
 
                         // PRESUPUESTO MENSUAL
-                        const Text(
-                          'PRESUPUESTO MENSUAL',
-                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                       const Text(
+                        'PRESUPUESTO MENSUAL',
+                        style: TextStyle(color: Colors.white70, fontSize: 13, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
                         GestureDetector(
                           onTap: () => setState(() => _isMonthlyBudgetVisible = !_isMonthlyBudgetVisible),
-                          child: _isMonthlyBudgetVisible
-                              ? const Text(
-                                  '\$150.000',
-                                  style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w900),
-                                )
-                              : ImageFiltered(
-                                  imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                                  child: const Text(
-                                    '\$999.999',
-                                    style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w900),
-                                  ),
-                                ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center, 
+                            mainAxisSize: MainAxisSize.min, 
+                            children: [
+                              // El presupuesto 
+                              _isMonthlyBudgetVisible
+                                  ? const Text(
+                                      '\$150.000',
+                                      style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w900),
+                                    )
+                                  : ImageFiltered(
+                                      imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                                      child: const Text(
+                                        '\$999.999',
+                                        style: TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w900),
+                                      ),
+                                    ),
+                              const SizedBox(width: 12), 
+                              Icon(
+                                _isMonthlyBudgetVisible ? Icons.visibility_off : Icons.visibility,
+                                color: Colors.white70,
+                                size: 24,
+                              ),
+                            ],
+                          ),
                         ),
 
                         const Spacer(),
@@ -133,6 +147,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         const Text(
                           'en tu catálogo personal',
                           style: TextStyle(color: Colors.white60, fontSize: 14),
+                        ),
+                        // Botón para explorar catálogo
+                        const SizedBox(height: 20),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SavedProductsScreen()),
+                            );
+                          },
+                          // Icono de búsqueda y texto del botón y estilos
+                          icon: const Icon(Icons.search, color: Colors.green),
+                          label: const Text('Explorar Catálogo'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.green[700],
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                          ),
                         ),
                         
                         const Spacer(),
