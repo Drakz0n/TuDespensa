@@ -104,7 +104,7 @@ graph TD
 ```
 
 ## Material de Apoyo
-- **Video de Exposición:** 
+- [**Video de Exposición**](https://youtu.be/fHktvrKx_qc)
 
 ## Investigacion
 ### Archivo [RESEARCH](RESEARCH.md) incluyendo la informacion de investigacion.
